@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Client.Models.Author>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "_AdminLayout";
+}
+
+<h1>Author</h1>
+
+<p>
+	<a asp-action="Create" data-bs-toggle="tooltip" data-bs-placement="top" title="Create">
+		<button type="button" class="btn btn-success">
+			<i class="fas fa-plus"></i>
+			<span aria-hidden="true"></span>
+		</button>
+	</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
+						<button class="btn btn-info dt-detail">
+							<i class="fa fa-info-circle"></i>
+						</button>
+					</a>
+					<a asp-action="Edit" asp-route-id="@item.Id" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+						<button class="btn btn-warning dt-edit">
+							<i class="fa fa-edit"></i>
+						</button>
+					</a>
+					<a asp-action="Delete" asp-route-id="@item.Id" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+						<button class="btn btn-danger dt-delete">
+							<i class="fa fa-remove"></i>
+						</button>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
